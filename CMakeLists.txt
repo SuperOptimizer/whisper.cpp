@@ -76,6 +76,7 @@ option(WHISPER_SANITIZE_UNDEFINED "whisper: enable undefined sanitizer" OFF)
 option(WHISPER_BUILD_TESTS    "whisper: build tests"          ${WHISPER_STANDALONE})
 option(WHISPER_BUILD_EXAMPLES "whisper: build examples"       ${WHISPER_STANDALONE})
 option(WHISPER_BUILD_SERVER   "whisper: build server example" ${WHISPER_STANDALONE})
+option(WHISPER_BUILD_FUZZ     "whisper: build fuzz targets"   OFF)
 
 # 3rd party libs
 option(WHISPER_CURL "whisper: use libcurl to download model from an URL" OFF)
@@ -218,6 +219,10 @@ endif ()
 
 if (WHISPER_BUILD_EXAMPLES)
     add_subdirectory(examples)
+endif()
+
+if (WHISPER_BUILD_FUZZ)
+    add_subdirectory(fuzz)
 endif()
 
 if (MSVC)
